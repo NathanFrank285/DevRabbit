@@ -8,14 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      fullName: {
+        type: Sequelize.STRING(50),
+        allowNull: false,
+      },
       username: {
         type: Sequelize.STRING(30),
         allowNull: false,
         unique: true,
-      },
-      fullName: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
       },
       email: {
         type: Sequelize.STRING(256),
@@ -26,13 +26,24 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
-      isExpert: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-      },
       biography: {
         type: Sequelize.TEXT,
         allowNull: false,
+      },
+      startAvailability: {
+        type: Sequelize.DATE,
+      },
+      endAvailability: {
+        type: Sequelize.DATE,
+      },
+      hourlyRate: {
+        type: Sequelize.INTEGER,
+      },
+      specialties: {
+        type: Sequelize.STRING,
+      },
+      videoLink: {
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,

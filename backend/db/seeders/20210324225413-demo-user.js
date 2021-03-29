@@ -12,7 +12,6 @@ module.exports = {
           username: "Demo-lition",
           hashedPassword: bcrypt.hashSync("password"),
           fullName: "Mr. Demolition",
-          isExpert: true,
           biography: "I like to blow things up",
         },
         {
@@ -20,7 +19,6 @@ module.exports = {
           username: "FakeUser1",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           fullName: "Fake man",
-          isExpert: false,
           biography: "I dont know who I am",
         },
         {
@@ -28,7 +26,6 @@ module.exports = {
           username: "FakeUser2",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           fullName: "Faker mister man",
-          isExpert: true,
           biography: "Just here trying to make some friends",
         },
       ],
