@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      fullName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -31,6 +35,14 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           len: [60, 60],
         },
+      },
+      isExpert: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      biography: {
+        type: DataTypes.TEXT,
+        allowNull: false,
       },
     },
     {
