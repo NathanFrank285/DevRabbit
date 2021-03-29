@@ -36,13 +36,24 @@ module.exports = (sequelize, DataTypes) => {
           len: [60, 60],
         },
       },
-      isExpert: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
       biography: {
         type: DataTypes.TEXT,
         allowNull: false,
+      },
+      startAvailability: {
+        type: Sequelize.DATE,
+      },
+      endAvailability: {
+        type: Sequelize.DATE,
+      },
+      hourlyRate: {
+        type: Sequelize.INTEGER,
+      },
+      specialties: {
+        type: Sequelize.STRING,
+      },
+      videoLink: {
+        type: Sequelize.TEXT,
       },
     },
     {
@@ -59,7 +70,8 @@ module.exports = (sequelize, DataTypes) => {
           attributes: {},
         },
       },
-    });
+    }
+  );
 
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
