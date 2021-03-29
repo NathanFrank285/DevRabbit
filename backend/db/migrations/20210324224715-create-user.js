@@ -13,6 +13,10 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      fullName: {
+        type: Sequelize.STRING(50),
+        allowNull: false,
+      },
       email: {
         type: Sequelize.STRING(256),
         allowNull: false,
@@ -20,6 +24,14 @@ module.exports = {
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,
+        allowNull: false,
+      },
+      isExpert: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      biography: {
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       createdAt: {
