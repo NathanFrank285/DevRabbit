@@ -15,6 +15,7 @@ export const load = (devs) => {
 }
 
 export const getDevs = (criteria) => async dispatch => {
+  console.log('did I make it to the store?')
   const response = await fetch("/api/devs", {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(criteria),
