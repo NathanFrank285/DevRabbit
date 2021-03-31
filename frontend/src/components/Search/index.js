@@ -14,7 +14,7 @@ function Search() {
   const [endTime, setEndTime] = useState("")
   const [message, setMessage] = useState("")
   const [validationErrors, setValidationErrors] = useState([])
-
+  console.log('I made a change')
   useEffect(() => {
     const errors = [];
     if (
