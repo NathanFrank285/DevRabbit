@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     endTime: DataTypes.DATE
   }, {});
   AvailabilityTable.associate = function(models) {
-    // associations can be defined here
+    AvailabilityTable.belongsTo(models.User, {foreignKey: 'userId'});
   };
   return AvailabilityTable;
 };

@@ -1,0 +1,8 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* todo work on the spacing of the sign up page to look like task rabbit */
+  height: 600px;
+  line-height: 18px;
+}

@@ -30,16 +30,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      startAvailability: {
-        type: Sequelize.DATE,
-      },
-      endAvailability: {
-        type: Sequelize.DATE,
-      },
       hourlyRate: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL(10,2),
       },
-      specialties: {
+      specialty: {
         type: Sequelize.STRING,
       },
       videoLink: {

@@ -30,8 +30,28 @@ router.post(
   "",
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+    console.log(req.body);
+    const {
+      email,
+      username,
+      password,
+      fullName,
+      biography,
+      hourlyRate,
+      specialty,
+      videoLink,
+    } = req.body;
+
+    const user = await User.signup({
+      email,
+      username,
+      password,
+      fullName,
+      biography,
+      hourlyRate,
+      specialty,
+      videoLink,
+    });
 
     await setTokenCookie(res, user);
 
@@ -40,6 +60,8 @@ router.post(
     });
   })
 );
+
+// router.put("", )
 
 
 
