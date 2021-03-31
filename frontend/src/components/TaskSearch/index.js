@@ -14,12 +14,7 @@ function TaskSearch() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(taskType(search));
-
-
-
-
     history.push(`/search/${search}`)
-
   }
 
 

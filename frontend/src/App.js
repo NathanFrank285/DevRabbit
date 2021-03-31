@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpFormPage from "./components/SignUpFormPage";
 import TaskSearch from "./components/TaskSearch";
+import ViewDevs  from "./components/ViewDevs";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Search from "./components/Search";
@@ -35,8 +36,10 @@ function App() {
           <TaskSearch/>
         </Route>
         <Route exact path="/search/:type">
-          {/* Add params into the  search path*/}
           <Search/>
+        </Route>
+        <Route exact path="/viewDevs">
+          <ViewDevs/>
         </Route>
       </Switch>
     </>

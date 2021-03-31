@@ -1,10 +1,13 @@
-// import 'Search.css'
-import { useSelector, useDispatch } from "react-redux";
-import {useParams, NavLink}  from 'react-router-dom'
+import { useSelector, useDispatch  } from "react-redux";
+import {useParams, NavLink, useHistory}  from 'react-router-dom'
 import {useState, useEffect} from 'react'
+import {getDevs} from '../../store/search'
 import compareAsc from "date-fns/compareAsc";
+import "./Search.css"
 
 function Search() {
+  const history = useHistory()
+  const dispatch = useDispatch()
   const searchValue = useSelector((state) => state.search.value);
   const {type} = useParams()
   const [startTime, setStartTime] = useState("")
@@ -14,33 +17,34 @@ function Search() {
 
   useEffect(() => {
     const errors = [];
-    console.log(startTime)
     if (
       compareAsc(Date.parse(startTime), Date.parse(endTime)) !== -1
-      // compareAsc(Date.parse(startTime), Date.parse(endTime)) === 0
+      || compareAsc(Date.parse(startTime), Date.parse(endTime)) === 0
     ) {
-      validationErrors.push(
-        "please select an end time that is after the current date and time"
+      errors.push(
+        "Please select an end time that is after the current date and time"
       );
     }
     setValidationErrors([...errors])
+    console.log(validationErrors);
   }, [startTime, endTime])
 
-  function handleSubmit(e) {
+  // todo  send to thunk, query for data, add it to the store, render the display page of developers with a button to pick one
+
+  async function handleSubmit(e) {
     e.preventDefault()
 
-    if (compareAsc(Date.parse(startTime), Date.parse(endTime)) !== -1){
-      validationErrors.push("please select an end time that is after the current date and time")
-    };
-
-
-    const search = {
+    const criteria = {
       type,
       startTime,
       endTime,
       message
     }
-    //todo grab the date info, check that startdate is before the end date, else render errors. if it passes errors, send to thunk, query for data, add it to the store, render the display page of developers with a button to pick one
+
+    const devs = dispatch(getDevs(criteria))
+    if (devs) {
+      history.push('/viewDevs')
+    }
   }
 
 
@@ -54,7 +58,7 @@ function Search() {
       <div className="buildGroup">
         <h3 className="buildGroup-title">Developer Options</h3>
         <ul className="errors">
-          {validationErrors && validationErrors.map((e) => <li key={e}>{e}</li>)}
+          {validationErrors.map((e) => <li className="error" key={e}>{e}</li>)}
         </ul>
         <div className="buildGroup-form">
           <form onSubmit={handleSubmit}>
