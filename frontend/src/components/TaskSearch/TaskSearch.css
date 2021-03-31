@@ -1,0 +1,75 @@
+.dashboard{
+  background-image: url(https://assets.taskrabbit.com/v3/assets/static/heros/homepage/hero-bookatask-small@3x-22ded6e7db61165cff390bdb32b128f9d8f517291e7080696ed78ef16e02895c.png);
+  height: 400px;
+  background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.taskSearch{
+  width: 100%;
+  display: block;
+}
+
+.taskSearch-greeting{
+  font-family: 'Proxima', Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  font-weight: 300;
+}
+
+.taskSearch-searchBar{
+  transition-property: border-color, color, box-shadow, -webkit-box-shadow;
+  width: 60%;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #b1b9c3;
+}
+.taskSearch-searchButton{
+  height: 30px;
+  background-color: white;
+  border: none;
+  border-color: none;
+}
+.taskSearch-searchButton:focus{
+  outline: black;
+}
+
+.taskSearch-datalist{
+  height: 50px;
+  scroll-behavior: smooth;
+}
+
+.taskSearch-suggestionsContainer{
+  display: flex;
+  flex-flow: row wrap;
+  width: 20%;
+
+}
+.taskSearch-suggestion{
+  color: #51af33;
+  border: 1px solid #51af33;
+  background-color: white;
+  padding-top: 0.625em;
+    padding-bottom: 0.625em;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5em 1.38em 0.5em;
+}
+.taskSearch-suggestion:hover{
+  color: white;
+  border: 1px solid #51af33;
+  background-color: #51af33;
+  border-radius: 4px;
+  padding-top: 0.625em;
+    padding-bottom: 0.625em;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5em 1.38em 0.5em;
+}
+.taskSearch-suggestion:focus{
+  outline: black;
+}

@@ -40,20 +40,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      startAvailability: {
-        type: Sequelize.DATE,
-      },
-      endAvailability: {
-        type: Sequelize.DATE,
-      },
       hourlyRate: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
-      specialties: {
-        type: Sequelize.STRING,
+      specialty: {
+        type: DataTypes.STRING,
       },
       videoLink: {
-        type: Sequelize.TEXT,
+        type: DataTypes.TEXT,
       },
     },
     {
@@ -102,18 +96,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ username, email, password, fullName, biography, hourlyRate, specialty, videoLink }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
+      fullName,
       username,
       email,
       hashedPassword,
+      biography,
+      hourlyRate,
+      specialty,
+      videoLink,
     });
     return await User.scope("currentUser").findByPk(user.id);
   };
 
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Review, { foreignKey: "clientId" });
+    User.hasMany(models.Review, { foreignKey: "developerId" });
+    User.hasMany(models.CurrentTask, { foreignKey: "clientId" });
+    User.hasMany(models.CurrentTask, { foreignKey: "developerId" });
+    User.hasMany(models.AvailabilityTable, { foreignKey: "userId" });
   };
   return User;
 };

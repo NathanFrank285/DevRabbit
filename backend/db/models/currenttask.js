@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     completed: DataTypes.BOOLEAN
   }, {});
   CurrentTask.associate = function(models) {
-    // associations can be defined here
+    CurrentTask.hasMany(models.Review,{foreignKey: "taskId"})
+    CurrentTask.belongsTo(models.User, { foreignKey: "clientId" });
+    CurrentTask.belongsTo(models.User, { foreignKey: "developerId" });
   };
   return CurrentTask;
 };
