@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/NathanFrank285/Solo_project/issues"
   },
-  "homepage": "https://github.com/NathanFrank285/Solo_project#readme"
+  "homepage": "https://github.com/NathanFrank285/Solo_project#readme",
+  "dependencies": {
+    "date-fns": "^2.19.0"
+  }
 }

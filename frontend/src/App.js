@@ -34,7 +34,8 @@ function App() {
         <Route exact path="/">
           <TaskSearch/>
         </Route>
-        <Route exact path="/search">
+        <Route exact path="/search/:type">
+          {/* Add params into the  search path*/}
           <Search/>
         </Route>
       </Switch>

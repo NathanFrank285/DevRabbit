@@ -18,7 +18,7 @@ function TaskSearch() {
 
 
 
-    history.push('/search')
+    history.push(`/search/${search}`)
 
   }
 
