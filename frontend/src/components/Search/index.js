@@ -41,7 +41,7 @@ function Search() {
       message
     }
 
-    const devs = dispatch(getDevs(criteria))
+    const devs = await dispatch(getDevs(criteria))
     if (devs) {
       history.push('/viewDevs')
     }
