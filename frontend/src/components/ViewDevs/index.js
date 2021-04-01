@@ -1,9 +1,11 @@
+import { useSelector, useDispatch  } from "react-redux";
 import "./ViewDevs.css"
 
 const ViewDevs = () => {
-
+  const devs = useSelector(state => state.search.res.devs)
   return (
-    <h1> Hi, I am a dev component, probably cant help with just an h1 though</h1>
+    <ul>{devs.map((dev) =><li key={dev}>{dev.fullName}</li>)}</ul>
+    // <h1>Hello</h1>
   )
 
 }

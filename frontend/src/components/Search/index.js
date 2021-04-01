@@ -14,7 +14,6 @@ function Search() {
   const [endTime, setEndTime] = useState("")
   const [message, setMessage] = useState("")
   const [validationErrors, setValidationErrors] = useState([])
-  console.log('I made a change')
   useEffect(() => {
     const errors = [];
     if (
@@ -26,7 +25,6 @@ function Search() {
       );
     }
     setValidationErrors([...errors])
-    console.log(validationErrors);
   }, [startTime, endTime])
 
   // todo  send to thunk, query for data, add it to the store, render the display page of developers with a button to pick one
@@ -41,7 +39,7 @@ function Search() {
       message
     }
 
-    const devs = dispatch(getDevs(criteria))
+    const devs = await dispatch(getDevs(criteria))
     if (devs) {
       history.push('/viewDevs')
     }

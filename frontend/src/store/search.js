@@ -15,16 +15,14 @@ export const load = (devs) => {
 }
 
 export const getDevs = (criteria) => async dispatch => {
-  console.log('did I make it to the store?')
-  const response = await fetch("/api/devs", {
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(criteria),
-  });
-
+  const {type} = criteria
+  const response = await fetch(`/api/search/${type}`);
   if (response.ok) {
-    //todo take devs, dispatch to reducer then grab the devs object in the view devs, filter accordingly
+    const res = await response.json()
+    const searchResponse = {...criteria, response: res}
+    dispatch(load(searchResponse));
+    return searchResponse;
   }
-
 }
 
 const initialState = { user: null };
@@ -38,7 +36,8 @@ const searchReducer = (state = initialState, action) => {
       return newTask;
     case SEARCH_DEVS:
       const devList = Object.assign({}, state)
-      devList.devs = action.devs
+      devList.criteria = action.devs
+      devList.res = action.devs.response
       return devList
 
     default:
