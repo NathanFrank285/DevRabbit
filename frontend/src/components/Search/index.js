@@ -7,25 +7,28 @@ import "./Search.css"
 
 function Search() {
   const history = useHistory()
+  // const devs = useSelector((state) => state.search.res.devs);
   const dispatch = useDispatch()
   const searchValue = useSelector((state) => state.search.value);
   const {type} = useParams()
   const [startTime, setStartTime] = useState("")
   const [endTime, setEndTime] = useState("")
   const [message, setMessage] = useState("")
+  const [devs, setDevs] = useState([])
   const [validationErrors, setValidationErrors] = useState([])
+
   useEffect(() => {
     const errors = [];
     if (
-      compareAsc(Date.parse(startTime), Date.parse(endTime)) !== -1
-      || compareAsc(Date.parse(startTime), Date.parse(endTime)) === 0
+      compareAsc(Date.parse(startTime), Date.parse(endTime)) !== -1 ||
+      compareAsc(Date.parse(startTime), Date.parse(endTime)) === 0
     ) {
       errors.push(
         "Please select an end time that is after the current date and time"
       );
     }
-    setValidationErrors([...errors])
-  }, [startTime, endTime])
+    setValidationErrors([...errors]);
+  }, [startTime, endTime]);
 
   // todo  send to thunk, query for data, add it to the store, render the display page of developers with a button to pick one
 
@@ -39,10 +42,20 @@ function Search() {
       message
     }
 
-    const devs = await dispatch(getDevs(criteria))
-    if (devs) {
-      history.push('/viewDevs')
+    const res = await dispatch(getDevs(criteria))
+    if (res) {
+      // const response = await res.json()
+      console.log(res)
+      setDevs(res.response.devs)
     }
+    if (res.response.devs.length === 0){
+      setValidationErrors([
+        "No developers for that search criteria, please search again",
+      ]);
+    }
+
+      // alert('no developers for that search criteria, please try again')
+
   }
 
 
@@ -109,6 +122,11 @@ function Search() {
           </form>
         </div>
       </div>
+        <div className="devList">
+          <ul> View your
+          {devs && devs.map(dev => <li>{dev.fullName}</li>)}
+          </ul>
+        </div>
     </div>
   );
 

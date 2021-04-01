@@ -12,6 +12,7 @@ const router = express.Router();
 router.get("/:type", asyncHandler( async (req, res) => {
   const {type} = req.params
   const devs = await User.findAll({
+    // include: AvailabilityTable,
     where: {
       specialty: type
     }
