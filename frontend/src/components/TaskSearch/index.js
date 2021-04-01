@@ -1,8 +1,11 @@
 import './TaskSearch.css'
 import {useState} from 'react'
+import { Route, Switch } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { taskType } from '../../store/search';
+import Search from '../Search';
+import Devs from '../Devs'
 
 function TaskSearch() {
   const history = useHistory()
@@ -30,7 +33,7 @@ function TaskSearch() {
             placeholder="choose what language you need help with"
             list="languages"
             value={search}
-            onChange={(e)=>setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
           ></input>
           <button type="submit" className="taskSearch-searchButton">
             <i class="fas fa-search"></i>
@@ -42,9 +45,11 @@ function TaskSearch() {
           </datalist>
           <div className="taskSearch-suggestions">
             {LANGUAGES.map((lang) => (
-              <button key={lang} className="taskSearch-suggestion"
-              value={lang}
-              onClick={(e)=>setSearch(e.target.value)}
+              <button
+                key={lang}
+                className="taskSearch-suggestion"
+                value={lang}
+                onClick={(e) => setSearch(e.target.value)}
               >
                 {lang}
               </button>

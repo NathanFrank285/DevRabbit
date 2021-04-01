@@ -2,20 +2,28 @@ import { useSelector, useDispatch  } from "react-redux";
 import {useParams, NavLink, useHistory}  from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {getDevs} from '../../store/search'
+import * as sessionActions from "../../store/session";
 import compareAsc from "date-fns/compareAsc";
+import Devs from "../Devs"
 import "./Search.css"
 
 function Search() {
+  console.log('search rendering');
   const history = useHistory()
   // const devs = useSelector((state) => state.search.res.devs);
   const dispatch = useDispatch()
-  const searchValue = useSelector((state) => state.search.value);
+
+  // const devArr = useSelector((state) =>
+  //   (state.search ? new Object(state.search.res) : null)
+  // );
   const {type} = useParams()
   const [startTime, setStartTime] = useState("")
   const [endTime, setEndTime] = useState("")
   const [message, setMessage] = useState("")
-  const [devs, setDevs] = useState([])
+  // const [devs, setDevs] = useState([])
   const [validationErrors, setValidationErrors] = useState([])
+  // console.log(devArr)
+
 
   useEffect(() => {
     const errors = [];
@@ -34,28 +42,18 @@ function Search() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-
     const criteria = {
       type,
       startTime,
       endTime,
       message
     }
-
     const res = await dispatch(getDevs(criteria))
-    if (res) {
-      // const response = await res.json()
-      console.log(res)
-      setDevs(res.response.devs)
-    }
-    if (res.response.devs.length === 0){
-      setValidationErrors([
-        "No developers for that search criteria, please search again",
-      ]);
-    }
-
-      // alert('no developers for that search criteria, please try again')
-
+    // if (res.response.devs.length === 0){
+    //   setValidationErrors([
+    //     "No developers for that search criteria, please search again",
+    //   ]);
+    // }
   }
 
 
@@ -69,7 +67,11 @@ function Search() {
       <div className="buildGroup">
         <h3 className="buildGroup-title">Developer Options</h3>
         <ul className="errors">
-          {validationErrors.map((e) => <li className="error" key={e}>{e}</li>)}
+          {validationErrors.map((e) => (
+            <li className="error" key={e}>
+              {e}
+            </li>
+          ))}
         </ul>
         <div className="buildGroup-form">
           <form onSubmit={handleSubmit}>
@@ -77,7 +79,7 @@ function Search() {
               <li className="buildGroup-startTime">
                 <p>
                   <input
-                    type="datetime-local"
+                    type="date"
                     id="startingTime"
                     value={startTime}
                     onChange={(e) => setStartTime(e.target.value)}
@@ -91,7 +93,7 @@ function Search() {
               <li className="buildGroup-endTime">
                 <p>
                   <input
-                    type="datetime-local"
+                    type="date"
                     id="startingTime"
                     value={endTime}
                     onChange={(e) => setEndTime(e.target.value)}
@@ -122,11 +124,7 @@ function Search() {
           </form>
         </div>
       </div>
-        <div className="devList">
-          <ul> View your
-          {devs && devs.map(dev => <li>{dev.fullName}</li>)}
-          </ul>
-        </div>
+      <div className="devList"><Devs /></div>
     </div>
   );
 

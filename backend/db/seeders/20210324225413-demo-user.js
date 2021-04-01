@@ -13,6 +13,8 @@ module.exports = {
           hashedPassword: bcrypt.hashSync("password"),
           fullName: "Mr. Demolition",
           biography: "I like to blow things up",
+          hourlyRate: 12,
+          specialty: "Python",
         },
         {
           email: faker.internet.email(),
@@ -20,6 +22,8 @@ module.exports = {
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           fullName: "Fake man",
           biography: "I dont know who I am",
+          hourlyRate: 15,
+          specialty: "Python",
         },
         {
           email: faker.internet.email(),
@@ -27,6 +31,8 @@ module.exports = {
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           fullName: "Faker mister man",
           biography: "Just here trying to make some friends",
+          hourlyRate: 10,
+          specialty: "Ruby",
         },
       ],
       {}
