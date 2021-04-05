@@ -18,33 +18,45 @@ router.get("/:type/:startTime/:endTime", asyncHandler( async (req, res) => {
     where: {
       specialty: type,
     },
-    [Op.and]:{
-      include: {
+    
+      include: [{
         model: AvailabilityTable,
-        where: {
-          startTime: {
-            [Op.lte]: searchStart,
-          },
-          endTime: {
-            [Op.gte]: searchEnd,
-          },
-        },
-      },
-      include: {
-        model: CurrentTask,
         where: {
           [Op.and]:{
             startTime: {
-              [Op.notBetween]: [searchStart, searchEnd],
+              [Op.lte]: searchStart,
             },
             endTime: {
-              [Op.notBetween]: [searchStart, searchEnd],
+              [Op.gte]: searchEnd,
             },
           }
         },
       },
-    }
+      {model: CurrentTask,
+      where: {
+        [Op.and]:{
+          startTime: {
+            [Op.notBetween]: [searchStart, searchEnd],
+          },
+          endTime: {
+            [Op.notBetween]: [searchStart, searchEnd],
+          },
+        }
+      }}
+    ]
+
   });
+
+  // const devIds = devs.map(dev => dev.id);
+
+  // const availDevs = await CurrentTask.findAll({
+  //   where: {
+  //     userId: devIds
+  //   },
+  // })
+
+  console.log("I AM THE AVAIL DEVS",devs)
+  //todo get the list of user ids that have current availability, map over them for an array of their ids, then use the list of ids to check for any overlap on teh current tasks, i.e. a current task start time/end time is not between either of the searched times
 
  res.json({devs})
 }))

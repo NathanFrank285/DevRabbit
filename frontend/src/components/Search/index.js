@@ -10,12 +10,16 @@ import "./Search.css"
 function Search() {
   console.log('search rendering');
   const history = useHistory()
+  const user = useSelector((state)=> state.session.user)
   // const devs = useSelector((state) => state.search.res.devs);
   const dispatch = useDispatch()
 
   // const devArr = useSelector((state) =>
   //   (state.search ? new Object(state.search.res) : null)
   // );
+  if (!user) {
+    history.push('/')
+  }
   const {type} = useParams()
   const [startTime, setStartTime] = useState("")
   const [endTime, setEndTime] = useState("")

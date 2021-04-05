@@ -9,6 +9,10 @@
   width: 100%;
   display: block;
 }
+.searchForm{
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+}
 
 .taskSearch-greeting{
   font-family: 'Proxima', Arial, Helvetica, sans-serif;
