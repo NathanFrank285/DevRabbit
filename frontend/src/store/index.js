@@ -2,10 +2,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from './session'
 import searchReducer from './search'
+import taskReducer from './task'
+import profileReducer from './profile'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  search: searchReducer
+  search: searchReducer,
+  task: taskReducer,
+  profile: profileReducer
 });
 
 let enhancer;

@@ -18,9 +18,7 @@ export const load = (devs) => {
   }
 }
 
-export const saveTask = (task) => {
-  //todo use csrfFetch to post it to the database
-}
+
 
 export const getDevs = (criteria) => async dispatch => {
   const {type, startTime, endTime} = criteria
@@ -34,7 +32,7 @@ export const getDevs = (criteria) => async dispatch => {
   }
 }
 
-const initialState = { user: null };
+const initialState = {};
 
 const searchReducer = (state = initialState, action) => {
   let newTask;

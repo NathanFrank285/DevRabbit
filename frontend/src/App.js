@@ -7,7 +7,8 @@ import TaskSearch from "./components/TaskSearch";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Search from "./components/Search";
-import Devs from "./components/Devs";
+import Profile from "./components/Profile";
+import Footer from "./components/Footer";
 
 
 
@@ -36,10 +37,11 @@ function App() {
             <Search />
           </Route>
           <Route exact path="/profile/:id">
-            {/* <Profile /> */}
+            <Profile />
           </Route>
         </Switch>
       )}
+      <Footer/>
     </>
   );
 }

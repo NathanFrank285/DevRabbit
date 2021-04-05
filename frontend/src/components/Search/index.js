@@ -20,9 +20,7 @@ function Search() {
   const [startTime, setStartTime] = useState("")
   const [endTime, setEndTime] = useState("")
   const [message, setMessage] = useState("")
-  // const [devs, setDevs] = useState([])
   const [validationErrors, setValidationErrors] = useState([])
-  // console.log(devArr)
 
 
   useEffect(() => {
@@ -114,17 +112,18 @@ function Search() {
                 ></textarea>
               </p>
             </ul>
-            <button
-              type="submit"
-              disabled={validationErrors.length > 0 ? true : false}
-            >
-              {" "}
-              Find your Dev!
-            </button>
+
+              <button
+                type="submit"
+                disabled={validationErrors.length > 0 ? true : false}
+              >
+                {" "}
+                Find your Dev!
+              </button>
           </form>
         </div>
       </div>
-      <div className="devList"><Devs /></div>
+      <div className="devList"><Devs type={type} message={message} startTime={startTime} endTime={endTime} /></div>
     </div>
   );
 

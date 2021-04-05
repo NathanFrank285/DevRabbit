@@ -28,7 +28,7 @@ app.use(
     },
   })
 );
-
+app.use(express.urlencoded({ extended: false }));
 //* Routes
 app.use(routes)
 
