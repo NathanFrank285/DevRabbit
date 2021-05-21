@@ -1,6 +1,7 @@
 # TaskRabbit_clone
 
 ### Technology Used
+
 * JavaScript
 * React
 * Redux
@@ -9,9 +10,28 @@
 * HTML
 * CSS
 
-### How to start a development environment**
-* Clone project
-* npm install in both the backend and frontend folder
-* Generate & add .env SessionSecret
-* npm start in the backend folder
-* npm start in the frontend folder and wait for the browser to open
+### How to start a development environment
+
+1. Clone project
+
+2. In the backend directory, generate a .env file inside the python-starter directory and SESSION_SECRET variable into it
+
+3. In your terminal, cd into the backend folder, run npm install and then npm start
+
+```bash
+cd backend
+npm install
+npm start
+
+```
+
+4. In a second terminal, cd into the frontend folder, run npm install and then npm start and wait for the browser to auto open on the homepage
+
+```bash
+cd frontend
+npm install
+npm start
+
+```
+
+5. Enjoy!

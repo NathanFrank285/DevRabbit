@@ -18,20 +18,21 @@ router.get("/:type/:startTime/:endTime", asyncHandler( async (req, res) => {
     where: {
       specialty: type,
     },
-    
-      include: [{
-        model: AvailabilityTable,
-        where: {
-          [Op.and]:{
-            startTime: {
-              [Op.lte]: searchStart,
-            },
-            endTime: {
-              [Op.gte]: searchEnd,
-            },
-          }
-        },
-      },
+    //todo check for only dates that are under current tasks, i.e. the search value should not fall within the values that  developer is currently working on a project, then they could be booked for any other days in theory. Then there would be calendar/messaging for the user and dev to coordinate any dates further. But we want to reduce the overhead of a dveloper having to constantly update their availability. Should add a not available option, include a specializations table
+      include: [
+      //   {
+      //   model: AvailabilityTable,
+      //   where: {
+      //     [Op.and]:{
+      //       startTime: {
+      //         [Op.lte]: searchStart,
+      //       },
+      //       endTime: {
+      //         [Op.gte]: searchEnd,
+      //       },
+      //     }
+      //   },
+      // },
       {model: CurrentTask,
       where: {
         [Op.and]:{
@@ -44,7 +45,6 @@ router.get("/:type/:startTime/:endTime", asyncHandler( async (req, res) => {
         }
       }}
     ]
-
   });
 
   // const devIds = devs.map(dev => dev.id);
@@ -56,7 +56,6 @@ router.get("/:type/:startTime/:endTime", asyncHandler( async (req, res) => {
   // })
 
   console.log("I AM THE AVAIL DEVS",devs)
-  //todo get the list of user ids that have current availability, map over them for an array of their ids, then use the list of ids to check for any overlap on teh current tasks, i.e. a current task start time/end time is not between either of the searched times
 
  res.json({devs})
 }))
