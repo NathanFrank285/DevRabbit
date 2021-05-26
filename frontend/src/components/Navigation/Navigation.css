@@ -1,5 +1,13 @@
 .navBar {
-  background-color: #51AF33;
-  height: 50px;
-  list-style-type: none;
+background: white;
+border-bottom: 1px solid #dce0e6;
+display: block;
+padding-top: 12px;
+list-style-type: none;
+
+}
+
+.logo{
+  width: 9%;
+
 }

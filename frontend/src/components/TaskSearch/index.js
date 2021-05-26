@@ -29,7 +29,7 @@ function TaskSearch() {
           <div></div>
           <input
             className="taskSearch-searchBar"
-            maxlength="150"
+            maxLength="150"
             placeholder="choose what language you need help with"
             list="languages"
             value={search}
