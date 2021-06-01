@@ -1,5 +1,8 @@
 # TaskRabbit_clone
 
+## Project Overview
+<a href='https://my-project-solo.herokuapp.com/' target='_blank'> DevRabbit</a> is a P2P foreign exchange platform and avoid unnecessary bank fees.  All work was completed on my own.
+
 ### Technology Used
 
 * JavaScript
